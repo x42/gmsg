@@ -40,6 +40,11 @@ if test "$PIX" != "X"; then
 	exit
 fi
 
+if test `wc -w $STORY | cut -f 1 -d ' '` -le 30; then
+	echo "story might be too short."
+	exit
+fi
+
 
 CMT=`curl -s $GITCALURL \
 | sed -e 's/\],\[/\n/g;s/\]//g;s/\[//g' \
